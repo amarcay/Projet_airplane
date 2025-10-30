@@ -127,6 +127,8 @@ Assurez-vous que les ports suivants sont disponibles :
 - Transformation des données en JSON structuré.
 - Envoi vers Kafka pour diffusion en temps réel.
 
+![Schéma du template NiFi pour ingestion API → Kafka](image/template_airport.png)
+
 ### Chaîne de traitement NiFi
 - **InvokeHTTP** → interroge l’API pour récupérer les données brutes.  
 - **EvaluateJsonPath** → extrait les champs pertinents du JSON.  
