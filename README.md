@@ -115,20 +115,19 @@ Assurez-vous que les ports suivants sont disponibles :
 ---
 # AJOUT THOMAS
 
-
 ---
 
-## 🛰️ 1️⃣ Collecte des données avec Apache NiFi
+## 🛰️ Collecte des données avec Apache NiFi
 
 **🎯 Objectif :** Récupérer et préparer les données issues de différentes API aéronautiques avant leur diffusion vers Kafka.
 
-### ⚙️ Fonctions principales
+### Fonctions principales
 - Connexion à plusieurs sources d’API.
 - Filtrage et enrichissement léger des flux.
 - Transformation des données en JSON structuré.
 - Envoi vers Kafka pour diffusion en temps réel.
 
-### 🔩 Chaîne de traitement NiFi
+### Chaîne de traitement NiFi
 - **InvokeHTTP** → interroge l’API pour récupérer les données brutes.  
 - **EvaluateJsonPath** → extrait les champs pertinents du JSON.  
 - **AttributesToJSON** → reformate les données extraites en flux JSON.  
@@ -137,11 +136,11 @@ Assurez-vous que les ports suivants sont disponibles :
 
 ---
 
-## ⚡ 2️⃣ Diffusion en temps réel avec Apache Kafka
+## ⚡ Diffusion en temps réel avec Apache Kafka
 
 **🎯 Objectif :** Servir de couche intermédiaire entre NiFi et Spark pour la diffusion des flux de données.
 
-### ⚙️ Fonctionnement
+### Fonctionnement
 - **Producteurs** : NiFi envoie les données vers Kafka.  
 - **Topics** : organisation des flux par type (vols, aéroports, fréquences, etc.).  
 - **Consommateurs** : Spark lit les messages pour les transformer en continu.
@@ -150,31 +149,28 @@ Kafka assure une **mise en file d’attente fiable** et garantit la **diffusion 
 
 ---
 
-## 🔥 3️⃣ Traitement et intégration avec Apache Spark Structured Streaming
+## 🔥 Traitement et intégration avec Apache Spark Structured Streaming
 
 **🎯 Objectif :** Nettoyer, transformer et insérer les données dans la base PostgreSQL en temps réel.
 
 Le script **`Streaming-processor.py`** assure le traitement des données issues de Kafka avant leur stockage.
 
-### 🧩 Étapes principales du pipeline Spark
-
 ### Étapes principales du pipeline Spark
 
-- **Configuration** → Chargement des dépendances pour Kafka et PostgreSQL.  
-- **Définition du schéma** → Déscription de la structure des données d’aéroports.  
-- **Lecture** → Récupère les flux JSON depuis Kafka.  
-- **Transformation** → Nettoie et uniformise les champs importants.  
-- **Écriture** → Insère les données transformées dans PostgreSQL.  
-- **Exécution continue** → Laisse tourner le streaming pour un flux en temps réel.
-
+- **⚙️ Configuration** → Chargement des dépendances pour Kafka et PostgreSQL.  
+- **📐 Définition du schéma** → Description de la structure des données d’aéroports.  
+- **🔍 Lecture** → Récupère les flux JSON depuis Kafka.  
+- **🧩 Transformation** → Nettoie et uniformise les champs importants.  
+- **💾 Écriture** → Insère les données transformées dans PostgreSQL.  
+- **♻️ Exécution continue** → Laisse tourner le streaming pour un flux en temps réel.
 
 ---
 
-## 🗄️ 4️⃣ Stockage et gestion avec PostgreSQL + pgAdmin
+## 🗄️ Stockage et gestion avec PostgreSQL + pgAdmin
 
 **🎯 Objectif :** Assurer la **persistance** et la **structuration** des données traitées.
 
-### ⚙️ Fonctionnalités
+### Fonctionnalités
 - **PostgreSQL** sert de base de données relationnelle principale.  
 - **pgAdmin** permet d’explorer les tables, exécuter des requêtes et valider les données.  
 
@@ -182,11 +178,11 @@ Cette couche garantit une **historisation complète** et un accès simplifié po
 
 ---
 
-## 📊 5️⃣ Visualisation avec Grafana
+## 📊 Visualisation avec Grafana
 
 **🎯 Objectif :** Transformer les données stockées en **indicateurs visuels dynamiques**.
 
-### ⚙️ Fonctionnalités principales
+### Fonctionnalités principales
 - Création de **dashboards interactifs** pour le suivi du trafic aérien.  
 - Visualisation de **cartes**, **graphiques**, **statistiques** et **tendances**.  
 - Mise en place d’**alertes** et de **KPI** pour la surveillance en temps réel.  
