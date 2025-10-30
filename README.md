@@ -568,8 +568,8 @@ pipeline-big-data-aero/
 
 Ce projet a été réalisé dans le cadre du cours **Données Distribuées** :
 
-- **[Alphonse Marçay]** - [GitHub](https://github.com/amarcay)
-- **[Thomas Bourvon]** - [GitHub](https://github.com/Thomas-Brvn)
+- **Alphonse Marçay** - [GitHub](https://github.com/amarcay)
+- **Thomas Bourvon** - [GitHub](https://github.com/Thomas-Brvn)
 
 ---
 
