@@ -161,16 +161,17 @@ Le script **`Streaming-processor.py`** assure le traitement des données issues 
 
 ### 🧩 Étapes principales du pipeline Spark
 
-| Étape | Fonction | Description |
-|:------:|:----------|:-------------|
-| 1️⃣ | **Configuration** | Chargement des dépendances pour Kafka et PostgreSQL |
-| 2️⃣ | **Définition du schéma** | Structure des données d’aéroports |
-| 3️⃣ | **SparkSession** | Initialisation de Spark avec les connecteurs |
-| 4️⃣ | **Lecture** | Récupération des flux JSON depuis Kafka |
-| 5️⃣ | **Transformation** | Nettoyage et uniformisation des données |
-| 6️⃣ | **Debug** | Affichage des données dans la console |
-| 7️⃣ | **Écriture** | Insertion dans PostgreSQL |
-| 8️⃣ | **Exécution continue** | Maintien du streaming en temps réel |
+### Étapes principales du pipeline Spark
+
+- **Configuration** → Chargement des dépendances pour Kafka et PostgreSQL.  
+- **Définition du schéma** → Décrit la structure des données d’aéroports.  
+- **SparkSession** → Initialise Spark avec les bons connecteurs.  
+- **Lecture** → Récupère les flux JSON depuis Kafka.  
+- **Transformation** → Nettoie et uniformise les champs importants.  
+- **Debug** → Affiche les données traitées dans la console pour vérification.  
+- **Écriture** → Insère les données transformées dans PostgreSQL.  
+- **Exécution continue** → Laisse tourner le streaming pour un flux en temps réel.
+
 
 ---
 
