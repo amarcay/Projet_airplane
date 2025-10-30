@@ -49,7 +49,7 @@ API Aéronautique → NiFi → Kafka → Spark Streaming → PostgreSQL → Graf
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         PIPELINE BIG DATA                                │
+│                         PIPELINE BIG DATA                               │
 └─────────────────────────────────────────────────────────────────────────┘
 
 ┌──────────────┐      ┌─────────────┐      ┌──────────────┐
@@ -111,6 +111,99 @@ Assurez-vous que les ports suivants sont disponibles :
 | `5432` | PostgreSQL | Base de données |
 | `5050` | pgAdmin | Interface d'administration |
 | `3000` | Grafana | Dashboards |
+
+---
+# AJOUT THOMAS
+# ✈️ Pipeline de Traitement des Données Aéronautiques
+
+Ce projet met en place une architecture complète pour **collecter**, **transformer** et **visualiser** en temps réel les données issues d’API aéronautiques.  
+L’infrastructure repose sur un écosystème moderne : **Apache NiFi**, **Kafka**, **Spark Structured Streaming**, **PostgreSQL** et **Grafana**.
+
+---
+
+## 🛰️ 1️⃣ Collecte des données avec Apache NiFi
+
+**🎯 Objectif :** Récupérer et préparer les données issues de différentes API aéronautiques avant leur diffusion vers Kafka.
+
+### ⚙️ Fonctions principales
+- Connexion à plusieurs sources d’API.
+- Filtrage et enrichissement léger des flux.
+- Transformation des données en JSON structuré.
+- Envoi vers Kafka pour diffusion en temps réel.
+
+### 🔩 Chaîne de traitement NiFi
+- **InvokeHTTP** → interroge l’API pour récupérer les données brutes.  
+- **EvaluateJsonPath** → extrait les champs pertinents du JSON.  
+- **AttributesToJSON** → reformate les données extraites en flux JSON.  
+- **PublishKafkaRecord** → publie les messages sur un *topic* Kafka.  
+- **LogAttribute** → permet le suivi et le débogage du flux.
+
+---
+
+## ⚡ 2️⃣ Diffusion en temps réel avec Apache Kafka
+
+**🎯 Objectif :** Servir de couche intermédiaire entre NiFi et Spark pour la diffusion des flux de données.
+
+### ⚙️ Fonctionnement
+- **Producteurs** : NiFi envoie les données vers Kafka.  
+- **Topics** : organisation des flux par type (vols, aéroports, fréquences, etc.).  
+- **Consommateurs** : Spark lit les messages pour les transformer en continu.
+
+Kafka assure une **mise en file d’attente fiable** et garantit la **diffusion en temps réel** des données aéronautiques.
+
+---
+
+## 🔥 3️⃣ Traitement et intégration avec Apache Spark Structured Streaming
+
+**🎯 Objectif :** Nettoyer, transformer et insérer les données dans la base PostgreSQL en temps réel.
+
+Le script **`Streaming-processor.py`** assure le traitement des données issues de Kafka avant leur stockage.
+
+### 🧩 Étapes principales du pipeline Spark
+
+| Étape | Fonction | Description |
+|:------:|:----------|:-------------|
+| 1️⃣ | **Configuration** | Chargement des dépendances pour Kafka et PostgreSQL |
+| 2️⃣ | **Définition du schéma** | Structure des données d’aéroports |
+| 3️⃣ | **SparkSession** | Initialisation de Spark avec les connecteurs |
+| 4️⃣ | **Lecture** | Récupération des flux JSON depuis Kafka |
+| 5️⃣ | **Transformation** | Nettoyage et uniformisation des données |
+| 6️⃣ | **Debug** | Affichage des données dans la console |
+| 7️⃣ | **Écriture** | Insertion dans PostgreSQL |
+| 8️⃣ | **Exécution continue** | Maintien du streaming en temps réel |
+
+---
+
+## 🗄️ 4️⃣ Stockage et gestion avec PostgreSQL + pgAdmin
+
+**🎯 Objectif :** Assurer la **persistance** et la **structuration** des données traitées.
+
+### ⚙️ Fonctionnalités
+- **PostgreSQL** sert de base de données relationnelle principale.  
+- **pgAdmin** permet d’explorer les tables, exécuter des requêtes et valider les données.  
+
+Cette couche garantit une **historisation complète** et un accès simplifié pour les analyses et visualisations ultérieures.
+
+---
+
+## 📊 5️⃣ Visualisation avec Grafana
+
+**🎯 Objectif :** Transformer les données stockées en **indicateurs visuels dynamiques**.
+
+### ⚙️ Fonctionnalités principales
+- Création de **dashboards interactifs** pour le suivi du trafic aérien.  
+- Visualisation de **cartes**, **graphiques**, **statistiques** et **tendances**.  
+- Mise en place d’**alertes** et de **KPI** pour la surveillance en temps réel.  
+- Connexion directe à PostgreSQL pour un rafraîchissement automatique des données.
+
+Grafana permet une **analyse intuitive** et une **prise de décision rapide**, tout en offrant une vision globale de l’activité aéronautique.
+
+---
+
+## 🧠 Vue d’ensemble du pipeline
+
+
+
 
 ---
 
