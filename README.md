@@ -119,7 +119,7 @@ Assurez-vous que les ports suivants sont disponibles :
 
 ##  Collecte des données avec Apache NiFi
 
-**  Objectif :** Récupérer et préparer les données issues de différentes API aéronautiques avant leur diffusion vers Kafka.
+**Objectif :**  Récupérer et préparer les données issues de différentes API aéronautiques avant leur diffusion vers Kafka.
 
 ### Fonctions principales
 - Connexion à plusieurs sources d’API.
@@ -138,7 +138,7 @@ Assurez-vous que les ports suivants sont disponibles :
 
 ## ⚡ Diffusion en temps réel avec Apache Kafka
 
-** Objectif : ** Servir de couche intermédiaire entre NiFi et Spark pour la diffusion des flux de données.
+**Objectif :** Servir de couche intermédiaire entre NiFi et Spark pour la diffusion des flux de données.
 
 ### Fonctionnement
 - **Producteurs** : NiFi envoie les données vers Kafka.  
@@ -151,7 +151,7 @@ Kafka assure une **mise en file d’attente fiable** et garantit la **diffusion 
 
 ##  Traitement et intégration avec Apache Spark Structured Streaming
 
-** Objectif :** Nettoyer, transformer et insérer les données dans la base PostgreSQL en temps réel.
+**Objectif :**  Nettoyer, transformer et insérer les données dans la base PostgreSQL en temps réel.
 
 Le script **`Streaming-processor.py`** assure le traitement des données issues de Kafka avant leur stockage.
 
@@ -168,7 +168,7 @@ Le script **`Streaming-processor.py`** assure le traitement des données issues 
 
 ## 🗄️ Stockage et gestion avec PostgreSQL + pgAdmin
 
-** Objectif : ** Assurer la **persistance** et la **structuration** des données traitées.
+**Objectif :**  Assurer la **persistance** et la **structuration** des données traitées.
 
 ### Fonctionnalités
 - **PostgreSQL** sert de base de données relationnelle principale.  
@@ -180,7 +180,7 @@ Cette couche garantit une **historisation complète** et un accès simplifié po
 
 ## 📊 Visualisation avec Grafana
 
-** Objectif : ** Transformer les données stockées en **indicateurs visuels dynamiques**.
+**Objectif :**  Transformer les données stockées en **indicateurs visuels dynamiques**.
 
 ### Fonctionnalités principales
 - Création de **dashboards interactifs** pour le suivi du trafic aérien.  
