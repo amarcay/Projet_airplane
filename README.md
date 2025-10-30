@@ -114,10 +114,7 @@ Assurez-vous que les ports suivants sont disponibles :
 
 ---
 # AJOUT THOMAS
-# ✈️ Pipeline de Traitement des Données Aéronautiques
 
-Ce projet met en place une architecture complète pour **collecter**, **transformer** et **visualiser** en temps réel les données issues d’API aéronautiques.  
-L’infrastructure repose sur un écosystème moderne : **Apache NiFi**, **Kafka**, **Spark Structured Streaming**, **PostgreSQL** et **Grafana**.
 
 ---
 
