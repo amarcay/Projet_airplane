@@ -92,7 +92,7 @@ Assurez-vous que les ports suivants sont disponibles :
 
 ---
 
-## ⚡ Diffusion en temps réel avec Apache Kafka
+## ⚡ Streaming avec Apache Kafka
 
 **Objectif :** Servir de couche intermédiaire entre NiFi et Spark pour la diffusion des flux de données.
 
