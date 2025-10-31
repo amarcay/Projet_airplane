@@ -23,6 +23,120 @@
   "panels": [
     {
       "datasource": {
+        "uid": "bf2bq0sboy4n4d"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "center",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "footer": {
+              "reducers": []
+            },
+            "inspect": false,
+            "wrapHeaderText": false,
+            "wrapText": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 9,
+        "x": 0,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "cellHeight": "sm",
+        "showHeader": false,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "max"
+          }
+        ]
+      },
+      "pluginVersion": "12.2.1",
+      "repeat": "_id",
+      "repeatDirection": "h",
+      "targets": [
+        {
+          "dataset": "airdata",
+          "editorMode": "code",
+          "format": "table",
+          "rawQuery": true,
+          "rawSql": "SELECT MAX(created_at) FROM airportsint LIMIT 50 ",
+          "refId": "A",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ],
+            "limit": 50
+          }
+        }
+      ],
+      "title": "Timestamp des données",
+      "type": "table"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 12,
+        "x": 9,
+        "y": 0
+      },
+      "id": 10,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "# JFK",
+        "mode": "markdown"
+      },
+      "pluginVersion": "12.2.1",
+      "title": "",
+      "type": "text"
+    },
+    {
+      "datasource": {
         "type": "grafana-postgresql-datasource",
         "uid": "af2is4bfd1fy8b"
       },
@@ -44,7 +158,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "vols"
         },
         "overrides": []
       },
@@ -52,7 +167,7 @@
         "h": 3,
         "w": 7,
         "x": 0,
-        "y": 0
+        "y": 4
       },
       "id": 1,
       "options": {
@@ -130,7 +245,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "minutes"
         },
         "overrides": []
       },
@@ -138,7 +254,7 @@
         "h": 3,
         "w": 7,
         "x": 7,
-        "y": 0
+        "y": 4
       },
       "id": 2,
       "options": {
@@ -212,7 +328,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "minutes"
         },
         "overrides": []
       },
@@ -220,7 +337,7 @@
         "h": 3,
         "w": 7,
         "x": 14,
-        "y": 0
+        "y": 4
       },
       "id": 3,
       "options": {
@@ -247,7 +364,7 @@
           "editorMode": "code",
           "format": "table",
           "rawQuery": true,
-          "rawSql": "SELECT\n  flight_date AS \"time\",\n  AVG(arrival_delay) AS \"Retard moyen à l’arrivée\"\nFROM flights\nWHERE departure_iata = 'JFK'\n  AND arrival_delay IS NOT NULL\nGROUP BY flight_date\nORDER BY flight_date;",
+          "rawSql": "SELECT 22 AS delay_minutes, 'min' AS unit;",
           "refId": "A",
           "sql": {
             "columns": [
@@ -322,7 +439,7 @@
         "h": 7,
         "w": 14,
         "x": 0,
-        "y": 3
+        "y": 7
       },
       "id": 4,
       "options": {
@@ -417,7 +534,7 @@
         "h": 7,
         "w": 7,
         "x": 14,
-        "y": 3
+        "y": 7
       },
       "id": 5,
       "options": {
@@ -554,7 +671,7 @@
         "h": 8,
         "w": 10,
         "x": 0,
-        "y": 10
+        "y": 14
       },
       "id": 6,
       "options": {
@@ -635,7 +752,7 @@
         "h": 8,
         "w": 11,
         "x": 10,
-        "y": 10
+        "y": 14
       },
       "id": 7,
       "options": {
@@ -731,7 +848,7 @@
         "h": 8,
         "w": 21,
         "x": 0,
-        "y": 18
+        "y": 22
       },
       "id": 8,
       "options": {
@@ -796,9 +913,11 @@
       },
       {
         "current": {
-          "text": "All",
+          "text": [
+            "KLM"
+          ],
           "value": [
-            "$__all"
+            "KLM"
           ]
         },
         "definition": "SELECT DISTINCT airline_name FROM flights WHERE departure_iata='JFK'",
@@ -807,6 +926,34 @@
         "name": "Compagnie",
         "options": [],
         "query": "SELECT DISTINCT airline_name FROM flights WHERE departure_iata='JFK'",
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "6261426af2228b5341bea64b",
+          "value": "6261426af2228b5341bea64b"
+        },
+        "definition": "SELECT DISTINCT _id FROM airportsint ORDER BY _id;",
+        "description": "",
+        "includeAll": true,
+        "name": "_id",
+        "options": [],
+        "query": "SELECT DISTINCT _id FROM airportsint ORDER BY _id;",
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
+        },
+        "definition": "\"23min\"",
+        "name": "temps",
+        "options": [],
+        "query": "\"23min\"",
         "refresh": 1,
         "regex": "",
         "type": "query"
@@ -821,5 +968,5 @@
   "timezone": "browser",
   "title": "JFK",
   "uid": "adg4m87",
-  "version": 5
+  "version": 16
 }
