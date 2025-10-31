@@ -70,10 +70,6 @@ Assurez-vous que les ports suivants sont disponibles :
 | `5050` | pgAdmin | Interface d'administration |
 | `3000` | Grafana | Dashboards |
 
----
-# AJOUT THOMAS
-
----
 
 ##  Collecte des données avec Apache NiFi
 
