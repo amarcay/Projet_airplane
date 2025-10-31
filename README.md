@@ -50,22 +50,6 @@ API Aéronautique → NiFi → Kafka → Spark Streaming → PostgreSQL → Graf
 ![Schéma architecture](image/architecture.jpg)
 
 
----
-
-## 🧩 Stack technologique
-
-| Composant | Technologie | Version | Rôle |
-|-----------|-------------|---------|------|
-| <img src="https://nifi.apache.org/images/apache-nifi-drop-logo.svg" width="50"> | **Apache NiFi** | 1.28.0 | Orchestration et ingestion des flux de données |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Apache_Kafka_logo.svg" width="50"> | **Apache Kafka** | 7.5.0 (Confluent) | Message broker distribué pour streaming |
-| <img src="https://zookeeper.apache.org/images/zookeeper_small.gif" width="50"> | **Apache ZooKeeper** | 7.5.0 | Coordination et gestion de l'état Kafka |
-| <img src="https://spark.apache.org/images/spark-logo-trademark.png" width="50"> | **Apache Spark** | 3.5.0 | Traitement distribué en temps réel |
-| <img src="https://www.postgresql.org/media/img/about/press/elephant.png" width="50"> | **PostgreSQL** | 15 | Base de données relationnelle |
-| 🛠️ | **pgAdmin** | Latest | Interface web d'administration PostgreSQL |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Grafana_logo.png" width="50"> | **Grafana** | Enterprise (latest) | Dashboards et visualisation temps réel |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Docker_%28container_engine%29_logo.png"> | **Docker Compose** | - | Orchestration de l'infrastructure |
-
----
 
 ## 📦 Prérequis
 
@@ -86,14 +70,10 @@ Assurez-vous que les ports suivants sont disponibles :
 | `5050` | pgAdmin | Interface d'administration |
 | `3000` | Grafana | Dashboards |
 
----
-# AJOUT THOMAS
-
----
 
 ##  Collecte des données avec Apache NiFi
 
-**Objectif :**  Récupérer et préparer les données issues de différentes API aéronautiques avant leur diffusion vers Kafka.
+**Objectif :**  Récupérer et préparer les données issues des API aéronautiques avant de les diffuser vers Kafka.
 
 ### Fonctions principales
 - Connexion à plusieurs sources d’API.
@@ -112,45 +92,27 @@ Assurez-vous que les ports suivants sont disponibles :
 
 ---
 
-## ⚡ Diffusion en temps réel avec Apache Kafka
+## ⚡ Streaming avec Apache Kafka
 
 **Objectif :** Servir de couche intermédiaire entre NiFi et Spark pour la diffusion des flux de données.
 
-### Fonctionnement
-- **Producteurs** : NiFi envoie les données vers Kafka.  
-- **Topics** : organisation des flux par type (vols, aéroports, fréquences, etc.).  
-- **Consommateurs** : Spark lit les messages pour les transformer en continu.
-
-Kafka assure une **mise en file d’attente fiable** et garantit la **diffusion en temps réel** des données aéronautiques.
-
----
-
-##  Traitement et intégration avec Apache Spark Structured Streaming
-
-**Objectif :**  Nettoyer, transformer et insérer les données dans la base PostgreSQL en temps réel.
-
-Le script **`Streaming-processor.py`** assure le traitement des données issues de Kafka avant leur stockage.
-
 ### Étapes principales du pipeline Spark
 
-- **⚙️ Configuration** → Chargement des dépendances pour Kafka et PostgreSQL.  
-- **📐 Définition du schéma** → Description de la structure des données d’aéroports.  
-- **🔍 Lecture** → Récupère les flux JSON depuis Kafka.  
-- **🧩 Transformation** → Nettoie et uniformise les champs importants.  
-- **💾 Écriture** → Insère les données transformées dans PostgreSQL.  
-- **♻️ Exécution continue** → Laisse tourner le streaming pour un flux en temps réel.
+- **Configuration** → Chargement des dépendances pour Kafka et PostgreSQL.  
+- **Définition du schéma** → Description de la structure des données d’aéroports.  
+- **Lecture** → Récupère les flux JSON depuis Kafka.  
+- **Transformation** → Nettoie et uniformise les champs importants.  
+- **Écriture** → Insère les données transformées dans PostgreSQL.  
+- **Exécution continue** → Laisse tourner le streaming pour un flux en temps réel.
 
 ---
 
 ## 🗄️ Stockage et gestion avec PostgreSQL + pgAdmin
 
-**Objectif :**  Assurer la **persistance** et la **structuration** des données traitées.
+**Objectif :**  Stocker les données traitées
 
-### Fonctionnalités
-- **PostgreSQL** sert de base de données relationnelle principale.  
-- **pgAdmin** permet d’explorer les tables, exécuter des requêtes et valider les données.  
-
-Cette couche garantit une **historisation complète** et un accès simplifié pour les analyses et visualisations ultérieures.
+### Fonctionnalités  
+- **pgAdmin** utilisation pour visualiser les tables et tester les requetes avant de les executer dans grafana.  
 
 ---
 
