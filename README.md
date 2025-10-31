@@ -50,22 +50,6 @@ API Aéronautique → NiFi → Kafka → Spark Streaming → PostgreSQL → Graf
 ![Schéma architecture](image/architecture.jpg)
 
 
----
-
-## 🧩 Stack technologique
-
-| Composant | Technologie | Version | Rôle |
-|-----------|-------------|---------|------|
-| <img src="https://nifi.apache.org/images/apache-nifi-drop-logo.svg" width="50"> | **Apache NiFi** | 1.28.0 | Orchestration et ingestion des flux de données |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Apache_Kafka_logo.svg" width="50"> | **Apache Kafka** | 7.5.0 (Confluent) | Message broker distribué pour streaming |
-| <img src="https://zookeeper.apache.org/images/zookeeper_small.gif" width="50"> | **Apache ZooKeeper** | 7.5.0 | Coordination et gestion de l'état Kafka |
-| <img src="https://spark.apache.org/images/spark-logo-trademark.png" width="50"> | **Apache Spark** | 3.5.0 | Traitement distribué en temps réel |
-| <img src="https://www.postgresql.org/media/img/about/press/elephant.png" width="50"> | **PostgreSQL** | 15 | Base de données relationnelle |
-| 🛠️ | **pgAdmin** | Latest | Interface web d'administration PostgreSQL |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Grafana_logo.png" width="50"> | **Grafana** | Enterprise (latest) | Dashboards et visualisation temps réel |
-| <img src="https://upload.wikimedia.org/wikipedia/commons/7/79/Docker_%28container_engine%29_logo.png"> | **Docker Compose** | - | Orchestration de l'infrastructure |
-
----
 
 ## 📦 Prérequis
 
