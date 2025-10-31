@@ -98,12 +98,12 @@ Assurez-vous que les ports suivants sont disponibles :
 
 ### Étapes principales du pipeline Spark
 
-- **⚙️ Configuration** → Chargement des dépendances pour Kafka et PostgreSQL.  
-- **📐 Définition du schéma** → Description de la structure des données d’aéroports.  
-- **🔍 Lecture** → Récupère les flux JSON depuis Kafka.  
-- **🧩 Transformation** → Nettoie et uniformise les champs importants.  
-- **💾 Écriture** → Insère les données transformées dans PostgreSQL.  
-- **♻️ Exécution continue** → Laisse tourner le streaming pour un flux en temps réel.
+- **Configuration** → Chargement des dépendances pour Kafka et PostgreSQL.  
+- **Définition du schéma** → Description de la structure des données d’aéroports.  
+- **Lecture** → Récupère les flux JSON depuis Kafka.  
+- **Transformation** → Nettoie et uniformise les champs importants.  
+- **Écriture** → Insère les données transformées dans PostgreSQL.  
+- **Exécution continue** → Laisse tourner le streaming pour un flux en temps réel.
 
 ---
 
