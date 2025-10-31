@@ -96,21 +96,6 @@ Assurez-vous que les ports suivants sont disponibles :
 
 **Objectif :** Servir de couche intermédiaire entre NiFi et Spark pour la diffusion des flux de données.
 
-### Fonctionnement
-- **Producteurs** : NiFi envoie les données vers Kafka.  
-- **Topics** : organisation des flux par type (vols, aéroports, fréquences, etc.).  
-- **Consommateurs** : Spark lit les messages pour les transformer en continu.
-
-Kafka assure une **mise en file d’attente fiable** et garantit la **diffusion en temps réel** des données aéronautiques.
-
----
-
-##  Traitement et intégration avec Apache Spark Structured Streaming
-
-**Objectif :**  Nettoyer, transformer et insérer les données dans la base PostgreSQL en temps réel.
-
-Le script **`Streaming-processor.py`** assure le traitement des données issues de Kafka avant leur stockage.
-
 ### Étapes principales du pipeline Spark
 
 - **⚙️ Configuration** → Chargement des dépendances pour Kafka et PostgreSQL.  
