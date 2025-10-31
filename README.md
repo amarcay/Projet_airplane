@@ -73,7 +73,7 @@ Assurez-vous que les ports suivants sont disponibles :
 
 ##  Collecte des données avec Apache NiFi
 
-**Objectif :**  Récupérer et préparer les données issues de différentes API aéronautiques avant leur diffusion vers Kafka.
+**Objectif :**  Récupérer et préparer les données issues des API aéronautiques avant de les diffuser vers Kafka.
 
 ### Fonctions principales
 - Connexion à plusieurs sources d’API.
