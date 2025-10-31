@@ -109,13 +109,10 @@ Assurez-vous que les ports suivants sont disponibles :
 
 ## 🗄️ Stockage et gestion avec PostgreSQL + pgAdmin
 
-**Objectif :**  Assurer la **persistance** et la **structuration** des données traitées.
+**Objectif :**  Stocker les données traitées
 
-### Fonctionnalités
-- **PostgreSQL** sert de base de données relationnelle principale.  
-- **pgAdmin** permet d’explorer les tables, exécuter des requêtes et valider les données.  
-
-Cette couche garantit une **historisation complète** et un accès simplifié pour les analyses et visualisations ultérieures.
+### Fonctionnalités  
+- **pgAdmin** utilisation pour visualiser les tables et tester les requetes avant de les executer dans grafana.  
 
 ---
 
